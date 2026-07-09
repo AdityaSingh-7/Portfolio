@@ -67,17 +67,45 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: "proj-vecdb",
+    title: "Mini Vector DB",
+    description:
+      "HNSW vector database engine built from scratch — 99.5% recall@10 on 10K vectors, matching hnswlib and FAISS accuracy.",
+    personalDescription:
+      "built an entire vector database from scratch. HNSW algorithm, multi-layer graph traversal, the whole thing. 99.5% recall — matches the industry libraries.",
+    details:
+      "From-scratch HNSW (Hierarchical Navigable Small World) approximate nearest-neighbor search in Python. Multi-layer graph with greedy beam search and heuristic neighbor selection. Exponential level assignment for automatic pyramid formation. Includes real-time animated D3.js visualization of algorithm execution, REST API with WebSocket streaming, text-to-vector embedding via sentence-transformers (all-MiniLM-L6-v2). Benchmarked against hnswlib and FAISS — achieves 99.5% recall@10 on 10K vectors. Full test suite covering brute-force comparison, layer operations, and insert/query flows.",
+    technologies: ["Python", "NumPy", "FastAPI", "React", "D3.js", "WebSocket"],
+    github: "https://github.com/AdityaSingh-7/Mini-Vector-DB",
+    size: "lg",
+    polaroidCaption: "vector db from scratch. 99.5% recall.",
+  },
+  {
+    id: "proj-kafka",
+    title: "Mini Kafka",
+    description:
+      "Distributed message broker in Go replicating Kafka's core — append-only logs, partitioned topics, consumer groups, zero dependencies.",
+    personalDescription:
+      "rewrote kafka's core in Go. from scratch. no dependencies. append-only logs, partitioned topics, consumer group coordination, crash recovery — the real algorithms.",
+    details:
+      "Message broker in Go (stdlib only, zero dependencies) implementing Kafka's core architecture. Append-only segmented logs with per-write fsync (zero data loss on kill -9 mid-write). Automatic crash recovery via byte-by-byte segment scanning and index rebuilding. Custom binary TCP protocol with length-prefixed framing. StickyAssignor algorithm for consumer group rebalancing (minimizes partition movement). Heartbeat-based failure detection (10s timeout). Key-based partitioning via FNV-1a hashing guaranteeing per-key ordering. Goroutine-per-connection concurrency model.",
+    technologies: ["Go", "TCP", "Binary Protocol", "stdlib only"],
+    github: "https://github.com/AdityaSingh-7/Mini-Kafka",
+    size: "lg",
+    polaroidCaption: "kafka from scratch. zero deps.",
+  },
+  {
     id: "proj-2b",
     title: "Self-Healing RAG",
     description:
-      "RAG system with self-validation and adaptive retry — validates answers via LLM-as-Judge, auto-heals with 5 strategies when confidence is low.",
+      "RAG with self-validation and adaptive retry — LLM-as-Judge validates answers, auto-heals with 5 strategies when confidence is low.",
     personalDescription:
-      "a RAG pipeline that doesn't just answer questions — it judges its own answers and retries with different strategies if it's not confident. it's smarter than me at knowing when it's wrong.",
+      "a RAG that judges its own answers and retries with different strategies if it's not confident. smarter than me at knowing when it's wrong.",
     details:
       "Self-healing retrieval pipeline: Retrieval → Generation → Validation (LLM-as-Judge). If confidence < 0.8, triggers adaptive healing with 5 strategies in priority order: Query Expansion, Multi-Query (3 rephrased variants), Keyword Fallback, Broader Retrieval (top-5 → top-20), Chunk Refinement (re-chunk at 256 tokens). Tracks strategy performance in SQLite to optimize future attempts. Graceful degradation when all strategies fail. Built with FastAPI, all-MiniLM-L6-v2 embeddings, Pinecone, Groq + Llama 3.3 70B, Next.js 14 frontend.",
     technologies: ["FastAPI", "Pinecone", "Groq", "Llama 3.3", "Next.js", "SQLite"],
     github: "https://github.com/AdityaSingh-7/Self-Healing-RAG",
-    size: "lg",
+    size: "wide",
     polaroidCaption: "a RAG that knows when it's wrong",
   },
   {
